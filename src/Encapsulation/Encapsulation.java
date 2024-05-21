@@ -11,6 +11,9 @@ public class Encapsulation {
     public Encapsulation() {
     }
 
+    // Encapsulation e = new Encapsulation();
+    // e.setHiddenNumber(20.5);
+    //
     // avoid setting or retrieving the data directly with the . operator
 
     public int getHiddenNumber() {
@@ -23,6 +26,10 @@ public class Encapsulation {
 
     public void setHiddenNumber(int hiddenNumber) {
         // some condition for the number
+        if (hiddenNumber > 10) {
+            System.out.println("Invalid number");
+            // throw Exception
+        }
         this.hiddenNumber = hiddenNumber;
     }
 

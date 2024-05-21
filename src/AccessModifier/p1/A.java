@@ -5,5 +5,4 @@ public class A {
     private int privateAttr;
     protected int protectedAttr;
     int defaultAttr;
-
 }
