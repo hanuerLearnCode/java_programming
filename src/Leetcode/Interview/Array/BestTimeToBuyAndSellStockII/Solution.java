@@ -47,7 +47,7 @@ public class Solution {
         int maxProfit = 0;
         int l = prices.length;
 
-        for (int i = 1; i < l - 1; i++) {
+        for (int i = 1; i < l; i++) {
             if (prices[i] > prices[i - 1]) {
                 maxProfit += prices[i] - prices[i - 1];
             }
