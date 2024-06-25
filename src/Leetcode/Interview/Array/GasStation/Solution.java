@@ -3,46 +3,34 @@ package Leetcode.Interview.Array.GasStation;
 public class Solution {
 
     public static void main(String[] args) {
-        int[] gas = {3,3,4};
-        int[] cost = {3,4,4};
+        int[] gas = {3, 3, 4};
+        int[] cost = {3, 4, 4};
         Solution s = new Solution();
         System.out.println(s.canCompleteCircuit(gas, cost));
     }
 
     public int canCompleteCircuit(int[] gas, int[] cost) {
 
-        int nGas = gas.length;
-        int nCost = cost.length;
+        int n = gas.length;
 
-        if (nGas != nCost) return -1;
+        int tongCacHieuGiuaGasVaCost = 0;
+        int hieuGiuaGasVaCost = 0;
+        int start = 0; // a starting point
 
-        int gasInTank = 0;
-        for (int i = 0; i < nGas - 1; i++) {
-            // if not enough gas
-            if (gas[i] < cost[i]) {
-                gasInTank = 0;
-                continue;
+        for (int i = 0; i < n; i++) {
+            tongCacHieuGiuaGasVaCost += gas[i] - cost[i];
+            hieuGiuaGasVaCost += gas[i] - cost[i];
+
+            // if gas < cost
+            if (hieuGiuaGasVaCost < 0) {
+                hieuGiuaGasVaCost = 0; // re-assign it to be 0
+                start = i + 1; // move to the next index
             }
-
-            // update gasInTank if movable
-            gasInTank = gas[i] - cost[i] + gas[i + 1];
-
-            // reach the end and still movable ?
-            if (i == nGas - 1) {
-                // loop again
-                for (int j = 0; j < nGas - 1; j++) {
-
-                    // if comeback to starting point
-                    if (i == j) return i;
-
-                    //
-
-                }
-            }
-
         }
 
-        return -1;
+
+        return (tongCacHieuGiuaGasVaCost >= 0) ? start : -1;
+
     }
 
 }
